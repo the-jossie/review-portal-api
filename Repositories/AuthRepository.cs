@@ -8,7 +8,7 @@ namespace Restaurant_Review_Api.Repositories
         public IEnumerable<Auth> GetAllUsers();
     }
 
-    public class AuthRepository : RepositoryBase
+    public class AuthRepository : RepositoryBase, IAuthRepository
     {
         DataContext _entityFramework;
 
