@@ -60,7 +60,7 @@ public class AuthController : ControllerBase
 
         if (existingUser != null)
         {
-            return BadRequest("User with this email already exists.");
+            return BadRequest(new { message = "User with this email already exists." });
         }
 
         // Generate password salt and hash
