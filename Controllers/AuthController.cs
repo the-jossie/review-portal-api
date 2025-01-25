@@ -36,7 +36,7 @@ public class AuthController : ControllerBase
         }));
     }
 
-    [HttpPost("signup")]
+    [HttpPost("/signup")]
     public IActionResult Signup(SignupDto userData)
     {
          if (userData.Password != userData.PasswordConfirmation)
@@ -85,7 +85,7 @@ public class AuthController : ControllerBase
         return StatusCode(500, "Failed to create user.");
     }
 
-    [HttpPost("login")]
+    [HttpPost("/login")]
     public IActionResult Login(LoginDto userData)
     {
         // Find user in Auth table
