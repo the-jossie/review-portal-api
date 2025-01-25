@@ -28,6 +28,8 @@ namespace Restaurant_Review_Api.Data
 
             modelBuilder.Entity<User>().ToTable("Users", "ReviewPortalSchema")
             .HasKey(u => u.UserId);
+
+            modelBuilder.Entity<Auth>().ToTable("Auth", "ReviewPortalSchema").HasKey(u => u.Email);
         }
 
     }

@@ -39,6 +39,15 @@ public class AuthController : ControllerBase
     [HttpPost("/signup")]
     public IActionResult Signup(SignupDto userData)
     {
+        // Validate required fields
+        if (string.IsNullOrWhiteSpace(userData.Email) ||
+            string.IsNullOrWhiteSpace(userData.Password) ||
+            string.IsNullOrWhiteSpace(userData.PasswordConfirmation) ||
+            string.IsNullOrWhiteSpace(userData.UserName))
+        {
+            return BadRequest(new { message = "All fields are required." });
+        }
+
          if (userData.Password != userData.PasswordConfirmation)
         {
             return BadRequest(new { message = "Passwords do not match" });
@@ -88,6 +97,12 @@ public class AuthController : ControllerBase
     [HttpPost("/login")]
     public IActionResult Login(LoginDto userData)
     {
+        // Validate required fields
+        if (string.IsNullOrWhiteSpace(userData.Email) || string.IsNullOrWhiteSpace(userData.Password))
+        {
+            return BadRequest(new { message = "Email and password are required." });
+        }
+
         // Find user in Auth table
         var userAuth = _authRepository.GetAllUsers().FirstOrDefault(u => u.Email == userData.Email);
 
