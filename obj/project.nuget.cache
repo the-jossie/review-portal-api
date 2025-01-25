@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4fSQ5JUge0c=",
+  "dgSpecHash": "g2eHHIgR9ZI=",
   "success": true,
   "projectFilePath": "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj",
   "expectedPackageFiles": [
@@ -8,9 +8,11 @@
     "/Users/macbookpro/.nuget/packages/microsoft.entityframeworkcore/9.0.1/microsoft.entityframeworkcore.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.1/microsoft.entityframeworkcore.abstractions.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.1/microsoft.entityframeworkcore.analyzers.9.0.1.nupkg.sha512",
+    "/Users/macbookpro/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/microsoft.entityframeworkcore.relational.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.1/microsoft.extensions.caching.abstractions.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.caching.memory/9.0.1/microsoft.extensions.caching.memory.9.0.1.nupkg.sha512",
+    "/Users/macbookpro/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.1/microsoft.extensions.configuration.abstractions.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.1/microsoft.extensions.dependencyinjection.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.1/microsoft.extensions.dependencyinjection.abstractions.9.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.extensions.logging/9.0.1/microsoft.extensions.logging.9.0.1.nupkg.sha512",
