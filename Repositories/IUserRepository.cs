@@ -1,6 +1,6 @@
 using Restaurant_Review_Api.Models;
 
-namespace Api_Tutorial.Data
+namespace Restaurant_Review_Api.Repositories
 {
     public interface IUserRepository
     {
@@ -10,7 +10,7 @@ namespace Api_Tutorial.Data
 
         public void RemoveEntity<T>(T entity);
 
-        public IEnumerable<User> GetUsers();
+        public IEnumerable<User> GetAllUsers();
 
         public User GetUser(int userId);
     }

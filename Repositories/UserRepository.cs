@@ -34,6 +34,13 @@ namespace Restaurant_Review_Api.Repositories
         }
 
 
+        public IEnumerable<User> GetAllUsers()
+    {
+        IEnumerable<User> users = _entityFramework.Users.ToList<User>();
+
+        return users;
+    }
+
     public User GetUser(int userId)
     {
         User? user = _entityFramework.Users.Where(u => u.UserId == userId).FirstOrDefault<User>();

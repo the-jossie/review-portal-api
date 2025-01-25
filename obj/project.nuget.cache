@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "R6ExoVOSDig=",
+  "dgSpecHash": "KV6lVCFHerY=",
   "success": true,
   "projectFilePath": "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj",
   "expectedPackageFiles": [
+    "/Users/macbookpro/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/macbookpro/.nuget/packages/microsoft.aspnetcore.openapi/8.0.11/microsoft.aspnetcore.openapi.8.0.11.nupkg.sha512",
