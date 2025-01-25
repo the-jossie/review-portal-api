@@ -1,4 +1,5 @@
-using Api_Tutorial.Data;
+using Restaurant_Review_Api.Data;
+using Restaurant_Review_Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
