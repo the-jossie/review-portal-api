@@ -6,7 +6,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Restaurant_Review_Api.Data;
 using Restaurant_Review_Api.Dtos;
 using Restaurant_Review_Api.Models;
 using Restaurant_Review_Api.Repositories;
@@ -17,18 +16,18 @@ namespace Restaurant_Review_Api.Controllers;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly DataContext _dbContext;
     private readonly IConfiguration _config;
 
     private readonly IUserRepository _userRepository;
+    private readonly IAuthRepository _authRepository;
     private readonly IMapper _mapper;
 
-    public AuthController(DataContext dbContext, IConfiguration config, IUserRepository userRepository)
+    public AuthController(IConfiguration config, IUserRepository userRepository, IAuthRepository authRepository)
     {
-        _dbContext = dbContext;
         _config = config;
 
         _userRepository = userRepository;
+        _authRepository = authRepository;
 
         _mapper = new Mapper(new MapperConfiguration(cfg =>
         {
@@ -48,7 +47,6 @@ public class AuthController : ControllerBase
         var newUser = _mapper.Map<User>(userData);
 
         // Check if the user already exists
-
         var existingUser = _userRepository.GetAllUsers().FirstOrDefault(u => u.Email == newUser.Email);
 
         if (existingUser != null)
@@ -87,6 +85,36 @@ public class AuthController : ControllerBase
         return StatusCode(500, "Failed to create user.");
     }
 
+    [HttpPost("login")]
+    public IActionResult Login(LoginDto userData)
+    {
+        // Find user in Auth table
+        var userAuth = _authRepository.GetAllUsers().FirstOrDefault(u => u.Email == userData.Email);
+
+        if (userAuth == null)
+        {
+            return BadRequest(new { message = "Invalid email or password." });
+        }
+
+        // Verify password
+        var passwordHash = GetPasswordHash(userData.Password, userAuth.PasswordSalt);
+        if (!userAuth.PasswordHash.SequenceEqual(passwordHash))
+        {
+            return BadRequest(new { message = "Invalid email or password." });
+        }
+
+
+        // Get user Details
+        var user = _userRepository.GetAllUsers().FirstOrDefault(u => u.Email == userData.Email);
+        if (user == null)
+        {
+            return BadRequest(new { message = "User not found" });
+        }
+
+        return Ok(new { message = "Login successful", token = CreateToken(user.UserId), userDetails = user });
+    }
+
+
     private byte[] GetPasswordHash(string password, byte[] passwordSalt)
     {
         string passwordSaltPlusString = _config.GetSection("AppSettings:PasswordKey").Value + Convert.ToBase64String(passwordSalt);
@@ -100,4 +128,28 @@ public class AuthController : ControllerBase
         );
     }
 
+    private string CreateToken(int userId)
+    {
+        var claims = new[]
+        {
+            new Claim("userId", userId.ToString())
+        };
+
+        var tokenKeyString = _config.GetSection("AppSettings:TokenKey").Value;
+        var tokenKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKeyString ?? ""));
+
+        var signingCredentials = new SigningCredentials(tokenKey, SecurityAlgorithms.HmacSha512Signature);
+
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(claims),
+            Expires = DateTime.Now.AddDays(1),
+            SigningCredentials = signingCredentials
+        };
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
+    }
 }
