@@ -3,55 +3,40 @@ using Restaurant_Review_Api.Models;
 
 namespace Restaurant_Review_Api.Repositories
 {
-    public class UserRepository
+    public interface IUserRepository : IRepositoryBase
+    {
+        public IEnumerable<User> GetAllUsers();
+
+        public User GetUser(int userId);
+    }
+
+    public class UserRepository : RepositoryBase
     {
         DataContext _entityFramework;
 
-        public UserRepository(IConfiguration config)
+        public UserRepository(IConfiguration config) : base(config)
         {
             _entityFramework = new DataContext(config);
         }
 
-        public bool SaveChanges()
-        {
-            return _entityFramework.SaveChanges() > 0;
-        }
-
-        public void AddEntity<T>(T entityToAdd)
-        {
-            if (entityToAdd != null)
-            {
-                _entityFramework.Add(entityToAdd);
-            }
-        }
-
-        public void RemoveEntity<T>(T entity)
-        {
-            if (entity != null)
-            {
-                _entityFramework.Remove(entity);
-            }
-        }
-
-
         public IEnumerable<User> GetAllUsers()
-    {
-        IEnumerable<User> users = _entityFramework.Users.ToList<User>();
-
-        return users;
-    }
-
-    public User GetUser(int userId)
-    {
-        User? user = _entityFramework.Users.Where(u => u.UserId == userId).FirstOrDefault<User>();
-
-        if (user != null)
         {
-            return user;
+            IEnumerable<User> users = _entityFramework.Users.ToList<User>();
+
+            return users;
         }
 
-        throw new Exception("Failed to Get User");
-    }
+        public User GetUser(int userId)
+        {
+            User? user = _entityFramework.Users.Where(u => u.UserId == userId).FirstOrDefault<User>();
+
+            if (user != null)
+            {
+                return user;
+            }
+
+            throw new Exception("Failed to Get User");
+        }
 
     }
 }
