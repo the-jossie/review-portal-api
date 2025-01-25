@@ -1,4 +1,4 @@
-namespace Restaurant_Review_Api
+namespace Restaurant_Review_Api.Models
 {
     public partial class User{
         public int UserId {get; set;}
