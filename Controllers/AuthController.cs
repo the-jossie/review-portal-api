@@ -83,6 +83,9 @@ public class AuthController : ControllerBase
 
         _userRepository.AddEntity<Auth>(newUserAuth);
 
+        // Set default role to "user"
+        newUser.UserRole = "user";
+
         // Add user to Users table
         _userRepository.AddEntity<User>(newUser);
 
