@@ -10,7 +10,7 @@ namespace Restaurant_Review_Api.Repositories
         public User GetUser(int userId);
     }
 
-    public class UserRepository : RepositoryBase
+    public class UserRepository : RepositoryBase, IUserRepository
     {
         DataContext _entityFramework;
 
