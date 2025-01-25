@@ -12,6 +12,7 @@ namespace Restaurant_Review_Api.Data
         }
 
         public virtual DbSet<User> Users {get; set;}
+        public virtual DbSet<Auth> AuthUsers {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
