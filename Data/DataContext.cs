@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Restaurant_Review_Api.Models;
+using Ca_Bank_Api.Models;
 
-namespace Restaurant_Review_Api.Data
+namespace Ca_Bank_Api.Data
 {
     public class DataContext: DbContext {
         private readonly IConfiguration _config;
@@ -24,12 +24,12 @@ namespace Restaurant_Review_Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("ReviewPortalSchema");
+            modelBuilder.HasDefaultSchema("CaBankSchema");
 
-            modelBuilder.Entity<User>().ToTable("Users", "ReviewPortalSchema")
+            modelBuilder.Entity<User>().ToTable("Users", "CaBankSchema")
             .HasKey(u => u.UserId);
 
-            modelBuilder.Entity<Auth>().ToTable("Auth", "ReviewPortalSchema").HasKey(u => u.Email);
+            modelBuilder.Entity<Auth>().ToTable("Auth", "CaBankSchema").HasKey(u => u.Email);
         }
 
     }

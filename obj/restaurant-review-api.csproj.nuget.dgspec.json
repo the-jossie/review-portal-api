@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj": {}
+    "/Users/macbookpro/Downloads/Workspace/devjo/ca-bank/restaurant-review-api.csproj": {}
   },
   "projects": {
-    "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj": {
+    "/Users/macbookpro/Downloads/Workspace/devjo/ca-bank/restaurant-review-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj",
+        "projectUniqueName": "/Users/macbookpro/Downloads/Workspace/devjo/ca-bank/restaurant-review-api.csproj",
         "projectName": "restaurant-review-api",
-        "projectPath": "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/restaurant-review-api.csproj",
+        "projectPath": "/Users/macbookpro/Downloads/Workspace/devjo/ca-bank/restaurant-review-api.csproj",
         "packagesPath": "/Users/macbookpro/.nuget/packages/",
-        "outputPath": "/Users/macbookpro/Downloads/Workspace/devjo/restaurant-review-api/obj/",
+        "outputPath": "/Users/macbookpro/Downloads/Workspace/devjo/ca-bank/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/macbookpro/.nuget/NuGet/NuGet.Config"

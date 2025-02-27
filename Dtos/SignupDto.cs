@@ -1,4 +1,4 @@
-namespace Restaurant_Review_Api.Dtos
+namespace Ca_Bank_Api.Dtos
 {
     public partial class SignupDto
     {
