@@ -1,14 +1,16 @@
-using Restaurant_Review_Api.Data;
-using Restaurant_Review_Api.Repositories;
+using Ca_Bank_Api.Data;
+using Ca_Bank_Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Logging.ClearProviders();  // Clear default providers
+builder.Logging.AddConsole();  // Log to console
+builder.Logging.AddDebug();    // Log to Debug window
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 builder.Services.AddCors((options) =>
     {
@@ -30,6 +32,7 @@ builder.Services.AddCors((options) =>
 
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 
