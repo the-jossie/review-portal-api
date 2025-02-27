@@ -1,6 +1,6 @@
-using Restaurant_Review_Api.Data;
+using Ca_Bank_Api.Data;
 
-namespace Restaurant_Review_Api.Repositories
+namespace Ca_Bank_Api.Repositories
 {
     public interface IRepositoryBase
     {
@@ -8,6 +8,7 @@ namespace Restaurant_Review_Api.Repositories
 
         public void AddEntity<T>(T entity);
 
+        public void UpdateEntity<T>(T entity);
         public void RemoveEntity<T>(T entity);
     }
 
@@ -32,6 +33,15 @@ namespace Restaurant_Review_Api.Repositories
                 _entityFramework.Add(entityToAdd);
             }
         }
+
+        public void UpdateEntity<T>(T entityToUpdate)
+        {
+            if (entityToUpdate != null)
+            {
+                _entityFramework.Update(entityToUpdate);
+            }
+        }
+
 
         public void RemoveEntity<T>(T entity)
         {

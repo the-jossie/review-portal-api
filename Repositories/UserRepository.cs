@@ -1,7 +1,7 @@
-using Restaurant_Review_Api.Data;
-using Restaurant_Review_Api.Models;
+using Ca_Bank_Api.Data;
+using Ca_Bank_Api.Models;
 
-namespace Restaurant_Review_Api.Repositories
+namespace Ca_Bank_Api.Repositories
 {
     public interface IUserRepository : IRepositoryBase
     {
