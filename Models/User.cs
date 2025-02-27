@@ -1,4 +1,4 @@
-namespace Restaurant_Review_Api.Models
+namespace Ca_Bank_Api.Models
 {
     public partial class User
     {
